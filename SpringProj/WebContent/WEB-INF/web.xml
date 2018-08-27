@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>SpringProj</display-name>
+  
+  
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:config/root-context.xml</param-value>
+  </context-param>
+  
+  
+  <servlet>
+    <servlet-name>FrontController</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/Spring/Config/*.xml</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FrontController</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>AnotherDispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AnotherDispatcher</servlet-name>
+    <url-pattern>*.kosmo</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>WEB-INF</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/beanConfig/beanConfig.xml</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WEB-INF</servlet-name>
+    <url-pattern>*.nate</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>SRC</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>
+			classpath:beanconfig/beanConfig.xml
+			</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SRC</servlet-name>
+    <url-pattern>*.daum</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>VIEW_RESOLVER</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>
+			classpath:beanconfig/viewresolver.xml
+			</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VIEW_RESOLVER</servlet-name>
+    <url-pattern>*.vrv</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 답변현 게시판용 디스패처 서블릿 -->
+   <servlet>
+    <servlet-name>REPLYBBS_PROJECT</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/replyBbs/config/*.xml</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>REPLYBBS_PROJECT</servlet-name>
+    <url-pattern>*.bbs</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <filter>
+    <filter-name>CharacterEncoding</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  <welcome-file-list>
+  	<!-- 답변형 게시판:프로젝트 클릭 처리용-->
+  	<welcome-file>/WEB-INF/index.jsp</welcome-file>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

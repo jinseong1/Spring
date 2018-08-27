@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>JSPProj</display-name>
+  <!-- 서블릿 등록 -->
+  <servlet>
+  	<servlet-name>ServletHello</servlet-name>
+  	<servlet-class>controller.HelloServlet</servlet-class>
+  </servlet>
+  <!-- 서블릿 맵핑 -->
+  <servlet-mapping>
+  	<servlet-name>ServletHello</servlet-name>
+  	<url-pattern>/HelloServlet.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>Calculator</servlet-name>
+  	<servlet-class>controller.Calculator</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Calculator</servlet-name>
+  	<url-pattern>/Calculate.kosmo</url-pattern>
+  </servlet-mapping>
+  <!--방법1  500번 에러는 무조건 이곳으로 이동한다 -->
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/Error14/ErrorCode.jsp</location>
+  </error-page>
+  <!--방법2  예외타입 클래스토 -->
+  <error-page>
+  	<exception-type>java.lang.NullPointerException</exception-type>
+  	<location>/Error14/ErrorType.jsp</location>
+  </error-page>  
+  
+  
+  <servlet>
+  	<servlet-name>ContentType</servlet-name>
+  	<servlet-class>controller.ContentTypeController</servlet-class>
+  </servlet>
+  
+  
+  
+  <!-- 요청  URL매핑 -->
+  <servlet-mapping>
+  	<servlet-name>ContentType</servlet-name>
+  	<url-pattern>/AniDir/SomeDir/SetContentsType.kosmo</url-pattern>
+  </servlet-mapping>
+  <!-- 컨텍스트 초기화 파라미터 등록 -->
+  <context-param>
+  	<param-name>ORACLE_URL</param-name>
+  	<param-value>jdbc:oracle:thin:@localhost:1521:orcl</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>ORACLE_DRIVER</param-name>
+  	<param-value>oracle.jdbc.OracleDriver</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>JNDI_ROOT</param-name>
+  	<param-value>java:comp/env</param-value>
+  </context-param>
+  <!--  페이징용 컨텍스트 초기화 파라미터 -->
+  <context-param>
+  	<param-name>PAGE_SIZE</param-name>
+  	<param-value>3</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>BLOCK_PAGE</param-name>
+  	<param-value>5</param-value>
+  </context-param>
+  <!-- 해당 JSP페이지에서만 사용가능한 서블릿 초기화 파라미터 등록 (효용도 떨어짐) -->
+  <servlet>
+  	<servlet-name>APPLICATION_JSP</servlet-name>
+  	<jsp-file>/InnerObject03/Application.jsp</jsp-file>
+  	<init-param>
+  		<param-name>SERVLET_INIT</param-name>
+  		<param-value>서블릿 초기화 파라미터입니다</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>APPLICATION_JSP</servlet-name>
+  	<url-pattern>/InnerObject03/Application.jsp</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 세션의 유효시간 설정 -->
+  <session-config>
+  	<session-timeout>10</session-timeout>
+  </session-config>
+  
+  <jsp-config>
+  	<taglib>
+  		<taglib-uri>
+  			/WEB-INF/tlds/mytag.tld
+  		</taglib-uri>
+  		<taglib-location>
+  			/WEB-INF/tlds/mytag.tld
+  		</taglib-location>
+  	</taglib>
+  </jsp-config>
+  
+  <servlet>
+  	<servlet-name>DataRoomIndex</servlet-name>
+  	<servlet-class>controller.dataroom.IndexController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DataRoomIndex</servlet-name>
+  	<url-pattern>/DataRoom/Index.kosmo</url-pattern>
+  </servlet-mapping>
+  <!-- 목록 요청용 -->
+  <servlet>
+  	<servlet-name>DataRoomList</servlet-name>
+	<servlet-class>controller.dataroom.ListController</servlet-class>
+	<!-- ListController의 서블릿 초기화 파라미터-->
+	<init-param>
+		<param-name>PAGESIZE_DATAROOM</param-name>
+		<param-value>5</param-value>
+	</init-param>
+	<init-param>
+		<param-name>BLOCKPAGE_DATAROOM</param-name>
+		<param-value>2</param-value>
+	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DataRoomList</servlet-name>
+  	<url-pattern>/DataRoom/List.kosmo</url-pattern>
+  </servlet-mapping>
+  <!-- 입력 폼으로 이동 및 데이타 베이스에 입력처리 요청용 -->
+  <servlet>
+  	<servlet-name>DataRoomWrite</servlet-name>
+  	<servlet-class>controller.dataroom.WriteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DataRoomWrite</servlet-name>
+  	<url-pattern>/DataRoom/Write.kosmo</url-pattern>
+  </servlet-mapping>
+  <!-- 상세보기용 -->
+  <servlet>
+  	<servlet-name>DataRoomView</servlet-name>
+  	<servlet-class>controller.dataroom.ViewController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DataRoomView</servlet-name>
+  	<url-pattern>/DataRoom/View.kosmo</url-pattern>
+  </servlet-mapping>
+  <!-- 비밀번호 확인용 -->
+  <servlet>
+  	<servlet-name>DataRoomPassword</servlet-name>
+  	<servlet-class>controller.dataroom.PasswordController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DataRoomPassword</servlet-name>
+  	<url-pattern>/DataRoom/Password.kosmo</url-pattern>
+  </servlet-mapping>
+  <!-- 수정 폼으로 이동 및 수정 처리 -->
+   <servlet>
+  	<servlet-name>DataRoomEdit</servlet-name>
+  	<servlet-class>controller.dataroom.EditController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DataRoomEdit</servlet-name>
+  	<url-pattern>/DataRoom/Edit.kosmo</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>DataRoomDownload</servlet-name>
+  	<servlet-class>controller.dataroom.DownloadController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DataRoomDownload</servlet-name>
+  	<url-pattern>/DataRoom/Download.kosmo</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+  	<welcome-file>index.jsp</welcome-file>
+  	<welcome-file>HelloWorld.jsp</welcome-file>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
