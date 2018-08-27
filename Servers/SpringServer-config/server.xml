@@ -151,7 +151,7 @@
 	
      
        <ResourceLink global="jdbc/spring" name="jdbc/spring" type="javax.sql.DataSource"/>
-      <Context docBase="SpringProj" path="/SpringProj" reloadable="true" source="org.eclipse.jst.jee.server:SpringProj"/></Host>
+      <Context docBase="SpringProj" path="/SpringProj" reloadable="true" source="org.eclipse.jst.jee.server:SpringProj"/><Context docBase="SpringProj" path="/SpringProj" reloadable="true" source="org.eclipse.jst.jee.server:SpringProj"/></Host>
     </Engine>
   </Service>
 </Server>

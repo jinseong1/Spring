@@ -3,17 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!-- 유효성을 검사합니다 서버측 클라이언트 -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Vaildation.jsp</title>
+<title>Validation.jsp</title>
 </head>
 <body>
-
-<fieldset>
+   	<fieldset>
       <legend>유효성 검증 </legend> 
+        
       <form action="<c:url value='/Validation/ValidationCheck.do'/>" method="post">
       <table bgcolor="gray" cellspacing="1" width="60%" >
        <tr bgcolor="white">
@@ -22,7 +21,7 @@
         <td><input type="text" name="name" value="${param.name}"/>
         <!-- 에러 메시지 표시
          <접두어:errors path="커멘트드객체명.속성명"/>
-                 단,커맨트 객체명은 소문자로 시작
+                 단,커맨드 객체명은 소문자로 시작
          -->       
         <span style="color:red;font-size:.8em">${nameError}<form:errors path="formCommand.name"/></span></td>
        </tr>
@@ -63,15 +62,15 @@
          <option value="고등학교" ${fn:indexOf(param.grade,"고")!= -1 ? 'selected="selected"': "" }>고등학교</option>
          <option value="대학교"   ${fn:indexOf(param.grade,"대")!= -1 ? 'selected="selected"': "" }>대학교</option>
         </select>
-         <span style="color:red;font-size:.8em">${gradeError}<form:errors path="formCommand.grade"/></span>
+         <span style="color:red;font-size:.8em">${gradeError }<form:errors path="formCommand.grade"/></span>
         </td>
        </tr>
        <tr bgcolor="white">
         <td>자기소개</td>
         <td>
-        <textarea name="self" cols="30" rows="10">${param.self}</textarea>
+        <textarea name="self" cols="30" rows="10">${param.self }</textarea>
    
-        <span style="color:red;font-size:.8em">${selfError}<form:errors path="formCommand.self"/></span>
+        <span style="color:red;font-size:.8em">${selfError }<form:errors path="formCommand.self"/></span>
         </td>
        </tr>
        <tr bgcolor="white" align="center">
@@ -82,7 +81,7 @@
       </table> 
      </form>
    
+      
   </fieldset> 
-
 </body>
 </html>

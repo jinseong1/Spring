@@ -1,8 +1,8 @@
 package controller.validation;
 
+
 public class FormCommand {
-	
-	//폼의 파라미터명과 일치시켜야함
+	//폼의 파라미터명과 같게 속성(멤버변수) 정의]
 	private String name;
 	private String years;
 	private String gender;
@@ -10,8 +10,9 @@ public class FormCommand {
 	private String grade;
 	private String self;
 	
+
 	
-	
+	//게터/세터]	
 	public String getName() {
 		return name;
 	}
@@ -48,9 +49,6 @@ public class FormCommand {
 	public void setSelf(String self) {
 		this.self = self;
 	}
-	
-	
-	
 	
 	
 }

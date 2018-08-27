@@ -5,4 +5,4 @@
  * @author kosmo6_01
  *
  */
-package com;
+package com.kosmo.replybbs;

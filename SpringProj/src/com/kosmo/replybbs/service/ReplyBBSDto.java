@@ -2,17 +2,17 @@ package com.kosmo.replybbs.service;
 
 public class ReplyBBSDto {
 	private String no;
-	private String id;
-	private String title;
-	private String content;
+	private String id; 
+	private String title; 
+	private String content; 
 	private java.sql.Date postdate;
 	private String refer;
 	private String step;
 	private String depth;
-	//프로그램 효율성을 위해 속성 추가
+	//프로그램의 효율성을 위한 속성 추가]
 	private String name;
-	/////////////////////////////
-	//게터셋터//////////////////////
+	
+	//게터/세터]
 	public String getNo() {
 		return no;
 	}
@@ -67,9 +67,5 @@ public class ReplyBBSDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-	
-	
 	
 }

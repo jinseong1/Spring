@@ -84,7 +84,7 @@
 	 모든 컴포넌트(자바클래스)를 자동으로 생성해준다
 	 즉 설정파일에 빈을 등록할 필요 없다.
 	 
-	 단, class앞에 @Controller,@Component,@Service,@Ropository
+	 단, class앞에 @Controller,@Component,@Service,@Repository
 	 가 붙은 클래스만 생성해 준다.
 	 각 클래스의 성격에 따라 적절한 어노테이션을 붙이자
 	 @Controller:사용자 요청을 처리하는 클래스
